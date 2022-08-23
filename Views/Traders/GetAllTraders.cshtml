@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ClientAppBigBazzar.Models.Traders>
+
+@{
+    ViewData["Title"] = "GetAllTraders";
+}
+
+<h1>GetAllTraders</h1>
+
+<p>
+    <a asp-action="TraderRegistration">Trader Registration</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TraderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraderPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraderEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmPassword)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraderPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraderEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmPassword)
+            </td>
+            <td>
+                @Html.ActionLink("UpdateTrader", "UpdateTrader", new { id=item.TraderId }) |
+@*                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+*@                
+              @Html.ActionLink("DeleteTrader", "DeleteTrader", new { id=item.TraderId})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

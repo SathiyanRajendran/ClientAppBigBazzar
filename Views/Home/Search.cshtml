@@ -1,0 +1,38 @@
+﻿@model ClientAppBigBazzar.Models.Products
+
+
+@{
+    ViewData["Title"] = "SearchForm";
+}
+<body >
+<h1>Search</h1>
+@if(ViewBag.ErrorMessage!=null)
+{
+    <div class="text-danger">@ViewBag.ErrorMessage</div>
+}
+@using(Html.BeginForm("SearchResult", "Home", FormMethod.Get)) 
+    //the following are search options  
+{   
+    <b> Search Option:</b>  
+    @Html.RadioButton("option", "ProductName") <text>Product Name</text> 
+    @Html.RadioButton("option", "CategoryName") <text> Category </text>  
+    @Html.TextBox("SearchPhrase","")
+    <input type ="submit"  name = "submit" value ="Search"/>  
+       
+}
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SearchResult" >
+            <h4>Search Result</h4>
+            <div class="form-group">
+                <label for="SearchPhrase" class="control-label"></label>
+                <input name="SearchPhrase" class="form-control" /><br />
+                <input type="submit" style="font-size:medium" value="Search" class="btn btn-success" />
+
+            </div>
+            
+        </form>
+    </div>
+</div>*@
+</body>

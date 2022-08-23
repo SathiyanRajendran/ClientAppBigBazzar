@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ClientAppBigBazzar.Models.Products>
+
+@{
+    ViewData["Title"] = "GetAllProducts";
+    ViewData["CustomerView"] = true;
+    ViewData["TraderView"] = false;
+    ViewData["SearchResult"] = false;
+}
+
+<h1>Products</h1>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+<partial name="_ProductsPartial" Models="Products" view-data="ViewData"></partial>

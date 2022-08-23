@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ClientAppBigBazzar.Models.Products>
+
+@{
+    var CustomerView = (bool)ViewData["CustomerView"];
+    var TraderView = (bool)ViewData["TraderView"];
+    var SearchResult = (bool)ViewData["SearchResult"];
+}
+
+<h1>GetAllProducts</h1>
+
+@if(TraderView && !CustomerView && !SearchResult)
+{
+    <p>
+    <a class="btn-primary" asp-action="ProductsCreate">Add Products</a>
+    </p>
+}
+@if(CustomerView && !TraderView && !SearchResult)
+{
+    <p>
+    <a class="btn-success" asp-controller="Cart" asp-action="CartsByCustomerId">My Cart</a>   @* It can shows all the carts of a particular customerId*@
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductImage)
+            </td>
+            <td>
+                 @if(item.ProductQuantity<5)
+                    {
+                        <h6 style="color:red">Out of Stock</h6>
+                    }
+                    else
+                    {
+                      <h6 style="color:green">Available</h6>  
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categories.CategoryName)
+            </td>
+            
+           @if(TraderView && !CustomerView && !SearchResult)
+                {
+                    
+                
+                <td>
+                <a class="btn-primary" asp-action="EditProducts" asp-route-id="@item.ProductId">Update</a> |
+                <a class="btn-danger" asp-action="DeleteProducts" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+                }
+                @if(CustomerView && !TraderView && !SearchResult)
+                {
+                <td>
+                <a class="btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId">Add To Cart</a>
+                </td>
+                }
+
+        </tr>
+}
+    </tbody>
+</table>

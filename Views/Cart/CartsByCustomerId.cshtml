@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ClientAppBigBazzar.Models.Carts>
+
+@{
+    ViewData["Title"] = "CartsByCustomerId";
+}
+
+<h1>CartsByCustomerId</h1>
+
+<p>
+    <a asp-action="GetAllProducts" asp-controller="Products">Go To Products</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Products.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Products.UnitPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Products.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Products.UnitPrice)
+            </td>
+            <td>
+               <a asp-action="UpdateCart" asp-route-id="@item.CartId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CartId">Details</a> |
+                <a asp-action="RemoveCart" asp-route-id="@item.CartId">Remove</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<form asp-controller="Payment" asp-action="ToBuy">
+    <div class="form-group">
+         <input  type="submit" value="Purchase" class="btn btn-primary" />
+    </div>
+</form>

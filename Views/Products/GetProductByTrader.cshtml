@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ClientAppBigBazzar.Models.Products>
+
+@{
+    ViewData["Title"] = "GetProductByTrader";
+    ViewData["TraderView"] = true;
+    ViewData["CustomerView"] = false;
+    ViewData["SearchResult"] = false;
+}
+
+<h1>Your Contributions</h1>
+
+    <partial name="_ProductsPartial" Models="Products" view-data="ViewData"></partial>
