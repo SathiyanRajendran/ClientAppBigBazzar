@@ -1,14 +1,17 @@
 ﻿@model ClientAppBigBazzar.Models.Products
 
 
-@{
-    ViewData["Title"] = "SearchForm";
-}
+
 <body >
-<h1>Search</h1>
+    @{
+        ViewData["Title"] = "Search";
+        ViewData["SearchResult"] = true;
+
+}
+
 @if(ViewBag.ErrorMessage!=null)
 {
-    <div class="text-danger">@ViewBag.ErrorMessage</div>
+    <h2 style="background-color:indianred">@ViewBag.ErrorMessage<i class="fa-solid fa-message-exclamation"></i></h2>
 }
 @using(Html.BeginForm("SearchResult", "Home", FormMethod.Get)) 
     //the following are search options  

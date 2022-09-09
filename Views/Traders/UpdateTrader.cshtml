@@ -13,9 +13,7 @@
         <form asp-action="UpdateTrader">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TraderId" class="control-label"></label>
-                <input asp-for="TraderId" class="form-control" />
-                <span asp-validation-for="TraderId" class="text-danger"></span>
+                <input asp-for="TraderId" type="hidden" />
             </div>
             <div class="form-group">
                 <label asp-for="TraderName" class="control-label"></label>

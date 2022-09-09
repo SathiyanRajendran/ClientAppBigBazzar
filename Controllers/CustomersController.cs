@@ -1,21 +1,25 @@
 ﻿using ClientAppBigBazzar.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using CaptchaMvc.HtmlHelpers;
-using Newtonsoft.Json.Linq;
 
 namespace ClientAppBigBazzar.Controllers
 {
     public class CustomersController : Controller
     {
        
+
         string BaseUrl = "https://localhost:7210/";
         [HttpGet]
         public IActionResult CustomerRegistration()
         {
+            //Random random = new Random();
+            //ViewBag.captcha1 = random.Next(0, 20);
+            //ViewBag.captcha2 = random.Next(1, 20);
+            //ViewBag.resultCaptcha=ViewBag.captcha1+ViewBag.captcha2;
             return View();
         }
         [HttpPost]
@@ -59,18 +63,7 @@ namespace ClientAppBigBazzar.Controllers
 
 
 
-            //------------------------------------------------------------------------------------------------------------------
-
-            ////validate google recaptcha here
-            //var responses = Request["g-recaptcha-response"];
-            //string secretKey = "6LfUKJ4hAAAAAARfSJgBTCH0O7wcNtXGp62UXhBl";
-            //var client = new WebClient();
-            //var result=client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}",secretKey,responses));
-            //var obj=JObject.Parse(result);
-            //var status = (bool)obj.SelectToken("success");
-            //ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
-
-            ////When you will post form for save data,you should check both the model validation and google recaptcha validation
+           
             using (var httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = new Uri(BaseUrl);
@@ -113,8 +106,6 @@ namespace ClientAppBigBazzar.Controllers
 
             }
         }
-
-      
 
         public async Task<ActionResult> Logout()
         {

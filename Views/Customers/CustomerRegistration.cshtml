@@ -1,58 +1,79 @@
 ﻿@model ClientAppBigBazzar.Models.Customers
-@using CaptchaMvc;  
-@using CaptchaMvc.HtmlHelpers  
+
 
 
 @{
     ViewData["Title"] = "CustomerRegistration";
 }
 
-<h1>CustomerRegistration</h1>
+<h1 class="text-center">BigBazzar.in</h1>
 
-<h4>Customers</h4>
-<hr />
 
-<div class="row">
+<head>
+<script src="https://kit.fontawesome.com/4c958e4f95.js" crossorigin="anonymous"></script>
+</head>
+@*<div class="row">
     <div class="col-md-4">
-        <form asp-action="CustomerRegistration">
+        <form asp-action="CustomerRegistration">*@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
-            <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
+            <div class="row row d-flex aligns-items-center justify-content-center">
+            <div class="col-md-6 card p-3 px-5 py-5 mt-3 bg-grad" style="background-color:cadetblue">
+           <form asp-action="CustomerRegistration" class="row g-6">
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+ 
+              <div class="form-group">
+                <label style="color:black" asp-for="CustomerName" class="control-label"></label>
                 <input asp-for="CustomerName" class="form-control" />
                 <span asp-validation-for="CustomerName" class="text-danger"></span>
             </div>
              <div class="form-group">
-                <label asp-for="MobileNumber" class="control-label"></label>
+                <label style="color:black" asp-for="MobileNumber" class="control-label"></label>
                 <input asp-for="MobileNumber" class="form-control" />
                 <span asp-validation-for="MobileNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CustomerEmail" class="control-label"></label>
+                <label style="color:black" asp-for="CustomerEmail" class="control-label"></label>
                 <input asp-for="CustomerEmail" class="form-control" />
                 <span asp-validation-for="CustomerEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label style="color:black" asp-for="Password" class="control-label"></label>
                 <input asp-for="Password"  class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <label style="color:black" asp-for="ConfirmPassword" class="control-label"></label>
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
            
             <div class="form-group">
-                <label asp-for="CustomerCity" class="control-label"></label>
+                <label style="color:black" asp-for="CustomerCity" class="control-label"></label>
                 <input asp-for="CustomerCity" class="form-control" />
                 <span asp-validation-for="CustomerCity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pincode" class="control-label"></label>
+                <label style="color:black" asp-for="Pincode" class="control-label"></label>
                 <input asp-for="Pincode" class="form-control" />
                 <span asp-validation-for="Pincode" class="text-danger"></span>
             </div>
+             <div class="form-group">
+                                 <br/>
+
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="text-center"> 
+                <p style="color:black">Already Have an Account? <a href="CustomerLogin">Sign In</a></p>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
          @*   <div>
     @using(Html.BeginForm("CustomerRegistration","Customers",FormMethod.Post))
     {
@@ -65,19 +86,4 @@
 </span>
  <script src="https://www.recaptcha.net/recaptcha/api.js" type="text/javascript" async defer></script>  *@
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-            <div class="text-center"> 
-                <p>Already Have an Account? <a href="CustomerLogin">Sign In</a></p>
-            </div>
-
-        </form>
-    </div>
-</div>
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+           

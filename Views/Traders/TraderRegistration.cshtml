@@ -4,43 +4,48 @@
     ViewData["Title"] = "TraderRegistration";
 }
 
-<h1>TraderRegistration</h1>
+<h1 class="text-center">BigBazzar.in</h1>
 
-<h4>Traders</h4>
-<hr />
-
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
-        <form asp-action="TraderRegistration">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="TraderRegistration">*@
+             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row row d-flex aligns-items-center justify-content-center">
+            <div class="col-md-6 card p-3 px-5 py-5 mt-3 bg-grad" style="background-color:lightsalmon">
+           <form asp-action="TraderRegistration" class="row g-6">
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
            
             <div class="form-group">
-                <label asp-for="TraderName" class="control-label"></label>
+                <label style="color:black" asp-for="TraderName" class="control-label"></label>
                 <input asp-for="TraderName" class="form-control" />
                 <span asp-validation-for="TraderName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TraderPhoneNumber" class="control-label"></label>
+                <label style="color:black" asp-for="TraderPhoneNumber" class="control-label"></label>
                 <input asp-for="TraderPhoneNumber"  class="form-control" />
                 <span asp-validation-for="TraderPhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TraderEmail" class="control-label"></label>
+                <label style="color:black" asp-for="TraderEmail" class="control-label"></label>
                 <input asp-for="TraderEmail" type="email" class="form-control" />
                 <span asp-validation-for="TraderEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label style="color:black" asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" type="password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <label style="color:black" asp-for="ConfirmPassword" class="control-label"></label>
                 <input asp-for="ConfirmPassword" type="password" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <br/>
                 <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+             <div class="text-center"> 
+                <p>Already Have an Account? <a href="TraderLogin">SignIn</a></p>
             </div>
         </form>
     </div>

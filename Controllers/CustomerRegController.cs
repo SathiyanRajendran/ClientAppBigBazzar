@@ -1,5 +1,6 @@
 ﻿using ClientAppBigBazzar.Helper;
 using ClientAppBigBazzar.Models;
+using ClientAppBigBazzar.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
@@ -68,7 +69,7 @@ namespace ClientAppBigBazzar.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("https://localhost:7210/");
+                httpClient.BaseAddress = new Uri("https://localhost:7210/api/Customers");
                 StringContent content = new StringContent(JsonConvert.SerializeObject(Uobj), Encoding.UTF8, "application/json");
                 if (reg.Captcha == reg.resultCaptcha)
                 {

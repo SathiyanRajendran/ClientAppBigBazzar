@@ -29,6 +29,10 @@ namespace ClientAppBigBazzar.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Cart()
+        {
+            return View("YourCarts");
+        }
         public IActionResult Search()
         {
             return View();
@@ -37,22 +41,27 @@ namespace ClientAppBigBazzar.Controllers
         {
             //p.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0
 
+            if(SearchPhrase==null || option==null)
+            {
+                ViewBag.ErrorMessage = "Please Choose Any One of the Filters to Search";
+                return View("Search");
+            }
             List<Products> result = new List<Products>();
 
             var products = await  P.ReturnAllProducts();
             foreach (var product in products)
             {
-                if (option.Equals("ProductName") &&  product.ProductName.IndexOf(SearchPhrase, StringComparison.OrdinalIgnoreCase) >= 0)
+                if (option.Equals("ProductName") &&  product.ProductName?.IndexOf(SearchPhrase, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     result.Add(product);
                 }
-                else if (option.Equals("CategoryName") && product.Categories.CategoryName.IndexOf(SearchPhrase, StringComparison.OrdinalIgnoreCase) >= 0)
+                else if (option.Equals("CategoryName") && product.Categories?.CategoryName?.IndexOf(SearchPhrase, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     result.Add(product);
                 }
-                else
+                else 
                 {
-                    ViewBag.ErrorMessage = "No Result Found";
+
                 }
             }
             return View(result);

@@ -2,9 +2,15 @@
 
 @{
     ViewData["Title"] = "CartsByCustomerId";
+    Layout = "_CustomerLogin";
 }
-
-<h1>CartsByCustomerId</h1>
+<h2 class="text-center">Hello @ViewBag.CustomerName!  Welcome To Your Cart</h2>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
 
 <p>
     <a asp-action="GetAllProducts" asp-controller="Products">Go To Products</a>
@@ -41,7 +47,6 @@
             </td>
             <td>
                <a asp-action="UpdateCart" asp-route-id="@item.CartId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CartId">Details</a> |
                 <a asp-action="RemoveCart" asp-route-id="@item.CartId">Remove</a>
             </td>
         </tr>
@@ -50,6 +55,7 @@
 </table>
 <form asp-controller="Payment" asp-action="ToBuy">
     <div class="form-group">
+                        <br/>
          <input  type="submit" value="Purchase" class="btn btn-primary" />
     </div>
 </form>

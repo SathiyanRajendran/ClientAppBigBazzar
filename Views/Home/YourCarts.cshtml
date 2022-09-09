@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Your Carts";
+}
+<div class="card">
+  <div class="card-header" >
+    Your Cart
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Your Amazon Cart is empty</h5>
+    <p class="card-text">Please Login to our Website and shop today`s deal</p>
+        <a asp-action="CustomerLogin" asp-controller="customers" class="btn btn-primary">SignIn</a>
+    <a asp-action="CustomerRegistration" asp-controller="customers" class="btn ">Are you a New Customer? Register Here</a>
+  </div>
+</div>

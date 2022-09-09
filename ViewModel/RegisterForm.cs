@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ClientAppBigBazzar.Models
+namespace ClientAppBigBazzar.ViewModel
 {
     public class RegisterForm
     {

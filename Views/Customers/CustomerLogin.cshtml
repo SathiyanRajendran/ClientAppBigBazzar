@@ -1,16 +1,17 @@
 ﻿@model ClientAppBigBazzar.Models.Customers
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 @{
     ViewData["Title"] = "CustomerLogin";
 }
 
-<h1>CustomerLogin</h1>
+<h1 class="text-center" style="color:black">BigBazzar.in</h1>
 
-<h4>Customers</h4>
-<hr />
 @if(ViewBag.ErrorMessage!=null)
 {
-    <div class="text-danger">@ViewBag.ErrorMessage</div>
+<h2 class="text-center" style="background-color:indianred">@ViewBag.ErrorMessage<i class="fa-solid fa-message-exclamation"></i></h2>
 }
 @if (TempData["AlertMessage"] != null)
 {
@@ -18,42 +19,51 @@
         <strong>Success !</strong> @TempData["AlertMessage"]
     </div>
 }
+
 <head>
     <script>
     window.alert("Please enter your valid Mail Id and Password")
     </script>
 </head>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CustomerLogin">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+ <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row row d-flex aligns-items-center justify-content-center">
+            <div class="col-md-6 card p-3 px-5 py-5 mt-3 bg-grad" style="background-color:goldenrod">
+           <form asp-action="CustomerLogin" class="row g-6">
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
            
             <div class="form-group">
-                <label asp-for="CustomerEmail" class="control-label"></label>
+                <label style="color:black" asp-for="CustomerEmail" class="control-label"></label>
                 <input asp-for="CustomerEmail" class="form-control" />
                 <span asp-validation-for="CustomerEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label style="color:black" asp-for="Password" class="control-label"></label>
                 <input asp-for="Password"  class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             
-            <tr>
-                <td>&nbsp;</td>
-
+          <br />
             <div class="form-group">
+                <br/>
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
+            <div>
+    <a asp-action="CustomerRegistration">Are you a New Customer? Register Here</a>
+</div>
         </form>
     </div>
 </div>
+@*@if (ViewBag.ErrorMessage != null)
+    {
+        <script type="text/javascript">
+        $(document).ready(function () {
+                toastr.warning('@ViewBag.ErrorMessage', '', { positionClass: 'toast-top-full-width' });
+           
+        });
+    </script>}
+*@
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

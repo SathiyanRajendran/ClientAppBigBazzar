@@ -4,12 +4,11 @@
     ViewData["Title"] = "TraderLogin";
 }
 
-<h1>TraderLogin</h1>
+<h1 class="text-center" style="color:black">BigBazzar.in</h1>
 
-<hr />
 @if(ViewBag.ErrorMessage!=null)
 {
-    <div class="text-danger">@ViewBag.ErrorMessage</div>
+<h2 class="text-center" style="background-color:indianred">@ViewBag.ErrorMessage<i class="fa-solid fa-message-exclamation"></i></h2>
 }
 @if (TempData["AlertMessage"] != null)
 {
@@ -23,35 +22,36 @@
     </script>
 </head>
 
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="TraderLogin">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+ <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row row d-flex aligns-items-center justify-content-center">
+            <div class="col-md-6 card p-3 px-5 py-5 mt-3 bg-grad" style="background-color:lightsalmon">
+           <form asp-action="TraderLogin" class="row g-6">
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
            
             <div class="form-group">
-                <label asp-for="TraderEmail" class="control-label"></label>
+                <label style="color:black" asp-for="TraderEmail" class="control-label"></label>
                 <input asp-for="TraderEmail" type="email" class="form-control" />
                 <span asp-validation-for="TraderEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
+                <label style="color:black" asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" type="password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
            
             <div class="form-group">
+                </br>
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
+            <div>
+    <a asp-action="TraderRegistration">Are you a New Trader? Register Here!</a>
+</div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="TraderRegistration">Sign Up</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

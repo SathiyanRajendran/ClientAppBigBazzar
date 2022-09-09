@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Payment View";
+             Layout = "_CustomerLogin";
+}
+<div class="card">
+  <div class="card-header">
+    Your Cart
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Successfully Paid the Amount.Your Order is on the Way</h5>
+    <p class="card-text">Thank You for Purchasing</p>
+        <a asp-action="GetAllProducts" asp-controller="Products" class="btn btn-primary">Go To Products</a>
+  </div>
+</div>

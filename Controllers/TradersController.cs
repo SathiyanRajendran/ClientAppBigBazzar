@@ -1,5 +1,6 @@
 ﻿using ClientAppBigBazzar.Models;
 using ClientAppBigBazzar.ViewModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
@@ -181,7 +182,11 @@ namespace ClientAppBigBazzar.Controllers
                     }
                     //--------------------------
                     //TempData["TraderId"] = Tt.traders.TraderId;
-                    HttpContext.Session.SetInt32("TraderId", Tt.traders.TraderId);
+                    HttpContext.Session.SetInt32("TraderId", Tt.traders.TraderId); //this is for view purpose what are the products addded by the traders
+                   
+                    
+                    
+                    HttpContext.Session.SetString("TraderName",Tt.traders.TraderName);  //this is for the view purpose after login
                     //-------------------------
                     string token = Tt.Token;
                     HttpContext.Session.SetString("token", token);

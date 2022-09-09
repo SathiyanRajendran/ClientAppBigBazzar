@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "RemoveCart";
+        Layout = "_CustomerLogin";
 }
 
 <h1>RemoveCart</h1>
@@ -33,7 +34,6 @@
     </dl>
     
     <form asp-action="RemoveCart">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
     </form>
 </div>
