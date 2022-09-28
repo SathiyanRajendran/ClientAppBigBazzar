@@ -92,9 +92,6 @@ namespace ClientAppBigBazzar.Controllers
                     return View();
                 }
             }
-
-
-
         }
     }
 }

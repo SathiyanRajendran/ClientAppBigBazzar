@@ -22,14 +22,14 @@ builder.Services.AddAuthentication()
         options.ClientSecret = "test";
     });
 //----------------------------------------
-builder.Services.Configure<IdentityOptions>(opt =>
-{
-    opt.Password.RequiredLength = 8;
-    opt.Password.RequireLowercase = true;
-    opt.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromSeconds(10);
-    opt.Lockout.MaxFailedAccessAttempts = 5;
-    opt.SignIn.RequireConfirmedAccount=true;
-});
+//builder.Services.Configure<IdentityOptions>(opt =>
+//{
+//    opt.Password.RequiredLength = 8;
+//    opt.Password.RequireLowercase = true;
+//    opt.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromSeconds(10);
+//    opt.Lockout.MaxFailedAccessAttempts = 5;
+//    opt.SignIn.RequireConfirmedAccount=true;
+//});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
